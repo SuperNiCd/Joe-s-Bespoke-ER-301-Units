@@ -33,6 +33,8 @@ function MotionSensor:onLoadGraph(pUnit)
   local env = self:createObject("EnvelopeFollower","env")
   local release = self:createObject("ParameterAdapter","release")
   local attack = self:createObject("ParameterAdapter","attack")
+  local pregain = self:createObject("Multiply","pregain")
+  local preGainAmt = self:createObject("Constant","preGainAmt")
   local gain = self:createObject("Multiply","gain")
   local level = self:createObject("GainBias","level")
   local levelRange = self:createObject("MinMax","levelRange")
@@ -45,6 +47,7 @@ function MotionSensor:onLoadGraph(pUnit)
   rectify:optionSet("Type",3) --full rectification
   self:setMaxDelayTime(0.1)
   delay:hardSet("Left Delay",0.001)
+  preGainAmt:hardSet("Value",4.0)
 
   
   
@@ -58,7 +61,9 @@ function MotionSensor:onLoadGraph(pUnit)
   connect(rectify,"Out",env,"In")
   connect(level,"Out",levelRange,"In")
   connect(level,"Out",gain,"Left")
-  connect(env,"Out",gain,"Right")
+  connect(env,"Out", pregain,"Left")
+  connect(preGainAmt,"Out",pregain,"Right")
+  connect(pregain,"Out",gain,"Right")
   connect(gain,"Out",compare,"In")
   connect(compare,"Out",pUnit,"Out1")
 
@@ -80,6 +85,19 @@ local views = {
   input = {"scope","input"}
 }
 
+local function linMap(min,max,n)
+  local map = app.DialMap()
+  map:clear(n+1)
+  local scale = (max - min)/n
+  for i=0,n do
+    map:add(i*scale+min)
+  end
+  map:setZero(-min/scale,false)
+  return map
+end
+
+local sensMap = linMap(0,100,100)
+
 function MotionSensor:onLoadViews(objects,controls)
 
   controls.input = InputComparator {
@@ -95,7 +113,7 @@ function MotionSensor:onLoadViews(objects,controls)
     description = "Level",
     gainbias = objects.level,
     range = objects.levelRange,
-    biasMap = self:linMap(0,100,100),
+    biasMap = sensMap,
     biasUnits = app.unitNone,
     initialBias = 50.0,
     gainMap = Encoder.getMap("gain"),
@@ -133,17 +151,6 @@ function MotionSensor:onLoadViews(objects,controls)
 
 
   return views
-end
-
-function MotionSensor:linMap(min,max,n)
-  local map = app.DialMap()
-  map:clear(n+1)
-  local scale = (max - min)/n
-  for i=0,n do
-    map:add(i*scale+min)
-  end
-  map:setZero(-min/scale,false)
-  return map
 end
 
 function MotionSensor:setMaxDelayTime(secs)

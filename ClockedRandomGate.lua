@@ -5,7 +5,9 @@ local Unit = require "Unit"
 local GainBias = require "Unit.ViewControl.GainBias"
 local Comparator = require "Unit.ViewControl.Comparator"
 local InputComparator = require "Unit.ViewControl.InputComparator"
-local ModeSelect = require "Unit.ViewControl.OptionControl"
+local ModeSelect = require "Unit.MenuControl.OptionControl"
+local Task = require "Unit.MenuControl.Task"
+local MenuHeader = require "Unit.MenuControl.Header"
 local Encoder = require "Encoder"
 local ply = app.SECTION_PLY
 
@@ -144,6 +146,19 @@ function ClockedRandomGate:deserialize(t)
   end
 end
 
+local function linMap(min,max,n)
+  local map = app.DialMap()
+  map:clear(n+1)
+  local scale = (max - min)/n
+  for i=0,n do
+    map:add(i*scale+min)
+  end
+  map:setZero(-min/scale,false)
+  return map
+end
+
+local probMap = linMap(0,1.0,100)
+
 local views = {
   expanded = {"tap","prob","mult","div","sync","width"},
   collapsed = {},
@@ -203,23 +218,12 @@ function ClockedRandomGate:onLoadViews(objects,controls)
     branch = self:getBranch("Prob"),
     gainbias = objects.probOffset,
     range = objects.probOffset,
-    biasMap = self:linMap(0,1,100),
+    biasMap = probMap,
     biasUnits = app.unitNone,
     initialBias = 1.0
   }  
 
   return views
-end
-
-function ClockedRandomGate:linMap(min,max,n)
-  local map = app.DialMap()
-  map:clear(n+1)
-  local scale = (max - min)/n
-  for i=0,n do
-    map:add(i*scale+min)
-  end
-  map:setZero(-min/scale,false)
-  return map
 end
 
 return ClockedRandomGate

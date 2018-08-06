@@ -1,0 +1,7 @@
+2018-Aug-04
+ENHANCED:  Motion Sensor sensitivty is now 4x as sensitive.  A setting of 25 is now the old 100.  A setting of 100 now makes it hypersensitive to changes in voltage
+ENCANCED:  Weighted coin toss now has menu option to set low output.  Choose 0 or -1
+ENHANCED:  All units updated to have localized scale maps.  This is a back end performance improvement
+FIXED:  Clocked Random Gate no longer crashes when opening unit menu
+
+
