@@ -1,2 +1,15 @@
 # Joe-s-Bespoke-ER-301-Units
-Joe's custom units for the ER-301 Sound Computer
+This repo contains units for the Orthogonal Devices ER-301 Sound Computer.  It currently contains:
+
+* Ring Modulator
+* Compare
+* Bespoke BPF
+* Pingable Scaled Random
+* Clocked Random Gate
+* Weighted Coin Toss
+* Motion Sensor
+
+For more details and discussion about these units, please visit:
+
+https://forum.orthogonaldevices.com/t/some-new-units-to-share/1902
+
