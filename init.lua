@@ -11,7 +11,8 @@ local units = {
     {title="Pingable Scaled Random",moduleName="PingableScaledRandom",keywords="modulation"},
     {category="Experimental"},
     {title="Bespoke Ensemble",moduleName="StereoEnsemble",keywords="modulate, pitch"},
-    {title="Bespoke Aliasing Pulse",moduleName="BespokeAliasingPulse",keywords="oscillator"}
+    {title="Bespoke Aliasing Pulse",moduleName="BespokeAliasingPulse",keywords="oscillator"},
+    {title="Flanger",moduleName="Flanger",keywords="modulate, pitch"}
   }
   
   return {
