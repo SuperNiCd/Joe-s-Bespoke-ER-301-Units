@@ -12,7 +12,8 @@ local units = {
     {category="Experimental"},
     {title="Bespoke Ensemble",moduleName="StereoEnsemble",keywords="modulate, pitch"},
     {title="Bespoke Aliasing Pulse",moduleName="BespokeAliasingPulse",keywords="oscillator"},
-    {title="Flanger",moduleName="Flanger",keywords="modulate, pitch"}
+    {title="Flanger",moduleName="Flanger",keywords="modulate, pitch"},
+    {title="Carousel Clock Divider",moduleName="CarouselClockDivider",keywords="timing"}
   }
   
   return {

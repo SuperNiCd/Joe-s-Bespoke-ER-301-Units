@@ -76,7 +76,8 @@ function ComparatorUnit:onLoadViews(objects,controls)
     branch = self:getBranch("Thresh"),
     gainbias = objects.threshold,
     range = objects.threshold,
-    biasMap = self:linMap(0,1.0,100),
+    biasMap = Encoder.getMap("default"),
+    biasUnits = app.unitNone,
     initialBias = 0.10
   }
 

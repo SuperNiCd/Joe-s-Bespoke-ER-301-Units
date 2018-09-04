@@ -5,6 +5,7 @@ local Unit = require "Unit"
 local PitchControl = require "Unit.ViewControl.PitchControl"
 local GainBias = require "Unit.ViewControl.GainBias"
 local Fader = require "Unit.ViewControl.Fader"
+local Comparator = require "Unit.ViewControl.Comparator"
 local Encoder = require "Encoder"
 local ply = app.SECTION_PLY
 
@@ -43,6 +44,8 @@ function AliasingPulse:loadMonoGraph(pUnit)
   local compVca = self:createObject("Multiply","compVca")
   local compVcaMult = self:createObject("Constant","compVcaMult")
   local offset = self:createObject("ConstantOffset","offset")
+  local sync = self:createObject("Comparator","sync")
+  sync:setTriggerMode()
 
   tie(bump,"Width",width,"Out")
 
@@ -62,6 +65,7 @@ function AliasingPulse:loadMonoGraph(pUnit)
   connect(level,"Out",vca,"Left")
 
   connect(osc,"Out",oscVca,"Left")
+  connect(sync,"Out",osc,"Sync")
   connect(oscVcaMult,"Out",oscVca,"Right")
   connect(oscVca,"Out",bump,"In")
   connect(bump,"Out",offset,"In")
@@ -74,6 +78,7 @@ function AliasingPulse:loadMonoGraph(pUnit)
   self:addBranch("V/oct","V/Oct",tune,"In")
   self:addBranch("f0","Fundamental",f0,"In")
   self:addBranch("width","Width",width,"In")
+  self:addBranch("sync","Sync",sync,"In")
 
 end
 
@@ -85,7 +90,7 @@ end
 
 
 local views = {
-  expanded = {"tune","freq","width","level"},
+  expanded = {"tune","freq","width","sync","level"},
   collapsed = {},
 }
 
@@ -130,7 +135,7 @@ function AliasingPulse:onLoadViews(objects,controls)
     branch = self:getBranch("Level"),
     gainbias = objects.level,
     range = objects.levelRange,
-    initialBias = 1.0,
+    initialBias = 0.5,
   }
 
   
@@ -144,6 +149,12 @@ function AliasingPulse:onLoadViews(objects,controls)
     initialBias = 0.5,
   }
 
+  controls.sync = Comparator {
+    button = "sync",
+    description = "Sync",
+    branch = self:getBranch("Sync"),
+    edge = objects.sync,
+  }
 
 
   return views
