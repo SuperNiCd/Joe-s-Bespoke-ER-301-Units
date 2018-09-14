@@ -8,6 +8,10 @@ This repo contains units for the Orthogonal Devices ER-301 Sound Computer.  It c
 * Clocked Random Gate
 * Weighted Coin Toss
 * Motion Sensor
+* Bespoke Ensemble
+* Bespoke Aliasing Pulse
+* Flanger
+* Carousel Clock Divider
 
 For more details and discussion about these units, please visit:
 
