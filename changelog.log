@@ -1,3 +1,8 @@
+2018-Sep-13
+NEW UNIT: Logics
+NEW UNIT: Maths
+JANITORIAL: Moved units from Experimental to appropriate categories.
+
 2018-Sep-04
 ENHANCED: Compare threshold control now goes from -1.0 to 1.0
 ENHANCED: Bespoke Aliasing Pulse, added sync option (probably most useful when using this unit for CV)

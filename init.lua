@@ -1,19 +1,24 @@
 local units = {
+    {category = "Delays and Reverb"},
+    {title="Bespoke Ensemble",moduleName="StereoEnsemble",keywords="modulate, pitch"},
+    {title="Flanger",moduleName="Flanger",keywords="modulate, pitch"},
     {category="Filtering"},
     {title="Bespoke BPF",moduleName="BespokeBPF",keywords="filter"},
     {category="Modulation"},
     {title="Ring Modulator",moduleName="Ringmod",keywords="pitch, modulate"},
+    {category="Oscillators"},
+    {title="Bespoke Aliasing Pulse",moduleName="BespokeAliasingPulse",keywords="oscillator"},
     {category="Mapping and Control"},
     {title="Compare",moduleName="Compare",keywords="mapping,control"},
     {title="Clocked Random Gate",moduleName="ClockedRandomGate",keywords="control"},
     {title="Motion Sensor",moduleName="MotionSensor",keywords="mapping"},
     {title="Weighted Coin Toss",moduleName="WeightedCoinToss",keywords="control"},
     {title="Pingable Scaled Random",moduleName="PingableScaledRandom",keywords="modulation"},
+    {category="Timing"},
+    {title="Carousel Clock Divider",moduleName="CarouselClockDivider",keywords="timing"},
     {category="Experimental"},
-    {title="Bespoke Ensemble",moduleName="StereoEnsemble",keywords="modulate, pitch"},
-    {title="Bespoke Aliasing Pulse",moduleName="BespokeAliasingPulse",keywords="oscillator"},
-    {title="Flanger",moduleName="Flanger",keywords="modulate, pitch"},
-    {title="Carousel Clock Divider",moduleName="CarouselClockDivider",keywords="timing"}
+    {title="Maths",moduleName="Maths",keywords="modulate"},
+    {title="Logics",moduleName="Logics",keywords="mapping,control"}
   }
   
   return {
