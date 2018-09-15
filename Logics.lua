@@ -54,6 +54,9 @@ function Logics:onLoadGraph(pUnit,channelCount)
 
   local truth = self:createObject("GainBias","truth")
   local falsth = self:createObject("GainBias","falsth")
+  local truthRange = self:createObject("MinMax","truthRange")
+  local falsthRange = self:createObject("MinMax","falsthRange")
+  
   self:addBranch("true","True",truth,"In")
   self:addBranch("false","False",falsth,"In")
 
@@ -173,6 +176,8 @@ function Logics:onLoadGraph(pUnit,channelCount)
   --connect output circuit
   connect(truth,"Out",outMult1,"Left")
   connect(falsth,"Out",outMult2,"Left")
+  connect(truth,"Out",truthRange,"In")
+  connect(falsth,"Out",falsthRange,"In")
   connect(selectMix3,"Out",outMult3,"Left")
   connect(selectMix3,"Out",outMult1,"Right")
   connect(negOne,"Out",outMult3,"Right")
@@ -229,7 +234,7 @@ function Logics:onLoadViews(objects,controls)
         description = "True Output",
         branch = self:getBranch("True"),
         gainbias = objects.truth,
-        range = objects.truth,
+        range = objects.truthRange,
         biasMap = Encoder.getMap("default"),
         initialBias = 1.0,
       }
@@ -240,7 +245,7 @@ function Logics:onLoadViews(objects,controls)
         description = "False Output",
         branch = self:getBranch("False"),
         gainbias = objects.falsth,
-        range = objects.falsth,
+        range = objects.falsthRange,
         biasMap = Encoder.getMap("default"),
         initialBias = 0.0,
       }
