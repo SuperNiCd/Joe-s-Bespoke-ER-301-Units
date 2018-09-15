@@ -12,6 +12,9 @@ This repo contains units for the Orthogonal Devices ER-301 Sound Computer.  It c
 * Bespoke Aliasing Pulse
 * Flanger
 * Carousel Clock Divider
+* Maths
+* Logics
+* Voltage Bank
 
 For more details and discussion about these units, please visit:
 
