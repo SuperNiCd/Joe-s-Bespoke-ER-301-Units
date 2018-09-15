@@ -18,7 +18,8 @@ local units = {
     {title="Carousel Clock Divider",moduleName="CarouselClockDivider",keywords="timing"},
     {category="Experimental"},
     {title="Maths",moduleName="Maths",keywords="modulate"},
-    {title="Logics",moduleName="Logics",keywords="mapping,control"}
+    {title="Logics",moduleName="Logics",keywords="mapping,control"},
+    {title="Voltage Bank",moduleName="VoltageBank",keywords="mapping"}
   }
   
   return {
