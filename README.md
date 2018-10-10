@@ -15,6 +15,7 @@ This repo contains units for the Orthogonal Devices ER-301 Sound Computer.  It c
 * Maths
 * Logics
 * Voltage Bank
+* Octave CV Shifter
 
 For more details and discussion about these units, please visit:
 

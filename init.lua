@@ -19,7 +19,8 @@ local units = {
     {category="Experimental"},
     {title="Maths",moduleName="Maths",keywords="modulate"},
     {title="Logics",moduleName="Logics",keywords="mapping,control"},
-    {title="Voltage Bank",moduleName="VoltageBank",keywords="mapping"}
+    {title="Voltage Bank",moduleName="VoltageBank",keywords="mapping"},
+    {title="Octave CV Shifter", moduleName="OctaveCVShifter",keywords="mapping"}
   }
   
   return {
