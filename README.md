@@ -16,6 +16,7 @@ This repo contains units for the Orthogonal Devices ER-301 Sound Computer.  It c
 * Logics
 * Voltage Bank
 * Octave CV Shifter
+* Timed Gate
 
 For more details and discussion about these units, please visit:
 
